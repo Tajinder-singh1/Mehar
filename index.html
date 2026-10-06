@@ -754,6 +754,22 @@
   .stat, .card, .knob-float, .scroll { will-change: auto; }
 
   .stage, .dock-wrap, .hero > .stage { z-index: 2; }
+/* Navigation must sit above the visual stage so the stage cannot intercept clicks/taps. */
+.dock-wrap{
+  z-index:50 !important;
+  pointer-events:none !important;
+}
+.dock-wrap .dock{
+  position:relative;
+  z-index:51;
+  pointer-events:auto !important;
+}
+.dock-wrap .dock-item{
+  position:relative;
+  z-index:52;
+  pointer-events:auto !important;
+  touch-action:manipulation;
+}
   .hero::before, .hero::after { pointer-events:none; }
 
   .card--about, .card--stove {
@@ -946,56 +962,95 @@
   /* ── Responsive ad slots: manual/display only, no popunder ─────────── */
   .mehar-ad-section{
     position:relative;
-    padding:28px 20px 34px;
+    z-index:1;
+    display:block;
+    width:100%;
+    box-sizing:border-box;
+    clear:both;
+    padding:30px 16px 36px;
+    margin:0;
     background:#f0f1eb;
     border-top:1px solid rgba(70,78,63,.08);
     border-bottom:1px solid rgba(70,78,63,.08);
+    overflow:visible;
+    isolation:isolate;
+    contain:layout paint;
   }
   .mehar-ad-wrap{
+    position:relative;
+    z-index:1;
     width:min(100%,760px);
     margin:0 auto;
     display:flex;
     flex-direction:column;
     align-items:center;
+    justify-content:flex-start;
     gap:18px;
   }
   .mehar-ad-label{
     margin:0;
+    min-height:12px;
     font-size:10px;
-    line-height:1;
+    line-height:1.2;
     letter-spacing:2px;
     text-transform:uppercase;
     color:#8b9186;
   }
   .mehar-ad-slot{
+    position:relative;
     width:100%;
-    min-height:50px;
+    min-height:52px;
+    height:auto;
     display:flex;
     align-items:center;
     justify-content:center;
     overflow:hidden;
+    box-sizing:border-box;
   }
   .mehar-ad-slot iframe{
-    display:block;
-    width:320px;
-    max-width:100%;
-    height:50px;
-    border:0;
+    display:block !important;
+    position:static !important;
+    width:320px !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    height:50px !important;
+    min-height:50px !important;
+    border:0 !important;
+    margin:0 auto !important;
   }
   #container-35a6d01b118df23a14a2cc37c2633363{
+    position:relative;
+    z-index:1;
     width:100%;
     max-width:728px;
-    min-height:50px;
+    min-height:280px;
+    height:auto;
     display:flex;
     align-items:center;
     justify-content:center;
+    box-sizing:border-box;
     overflow:hidden;
+    clear:both;
+  }
+  #container-35a6d01b118df23a14a2cc37c2633363 > *{
+    position:static !important;
+    box-sizing:border-box !important;
+    max-width:100% !important;
+  }
+  #container-35a6d01b118df23a14a2cc37c2633363 iframe{
+    display:block !important;
+    width:min(100%,728px) !important;
+    max-width:100% !important;
+    border:0 !important;
   }
   .mehar-smartlink{
+    position:relative;
+    z-index:2;
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    min-height:42px;
+    min-width:180px;
+    min-height:44px;
     padding:0 22px;
     border-radius:999px;
     border:1px solid rgba(70,78,63,.18);
@@ -1006,16 +1061,33 @@
     letter-spacing:1.4px;
     text-transform:uppercase;
     box-shadow:0 10px 24px rgba(33,40,30,.07);
-    transition:transform .25s ease, box-shadow .25s ease;
+    transition:transform .25s ease, box-shadow .25s ease, background .2s ease;
+    cursor:pointer;
+    touch-action:manipulation;
   }
   .mehar-smartlink:hover{
     transform:translateY(-2px);
     box-shadow:0 16px 32px rgba(33,40,30,.12);
+    background:#fafbf7;
+  }
+  .mehar-smartlink:focus-visible{
+    outline:3px solid rgba(140,117,61,.35);
+    outline-offset:3px;
   }
   @media(max-width:560px){
-    .mehar-ad-section{padding:22px 12px 28px;}
+    .mehar-ad-section{padding:22px 10px 30px;}
     .mehar-ad-wrap{gap:14px;}
-    .mehar-ad-slot{min-height:50px;}
+    .mehar-ad-slot{min-height:52px;}
+    #container-35a6d01b118df23a14a2cc37c2633363{
+      width:100%;
+      min-height:280px;
+      max-width:100%;
+    }
+    #container-35a6d01b118df23a14a2cc37c2633363 iframe{
+      width:100% !important;
+      max-width:100% !important;
+    }
+    .mehar-smartlink{width:min(100%,320px);}
   }
 
   /* ── Scrollable Mehar Events sections ─────────────────────────────── */
@@ -1529,7 +1601,7 @@ Instagram: @mehar_events1 and @joban.lahoria.3.
       <script async="async" data-cfasync="false" src="https://pl31683030.profitableratecpmnetwork.com/35a6d01b118df23a14a2cc37c2633363/invoke.js"></script>
     </div>
 
-    <a class="mehar-smartlink" href="https://www.profitableratecpmnetwork.com/jc3hk0ahh6?key=d35004be67fdd135283f359ac18a2136" target="_blank" rel="noopener noreferrer sponsored">Sponsored Link</a>
+    <a class="mehar-smartlink" href="https://www.profitableratecpmnetwork.com/jc3hk0ahh6?key=d35004be67fdd135283f359ac18a2136" rel="sponsored">Sponsored Link</a>
   </div>
 </section>
 
@@ -1628,33 +1700,57 @@ Instagram: @mehar_events1 and @joban.lahoria.3.
     reveal();
   }
 
-  // Fully working navigation for the floating dock. The original visual
-  // interactions are preserved, while these handlers guarantee that the
-  // buttons actually navigate to the corresponding sections.
+  // Robust navigation: the anchors remain real links, while this handler
+  // adds smooth scrolling and keeps the active button synchronized.
+  function goToSection(id) {
+    var target = document.getElementById(id);
+    if (!target) return false;
+    if (id === 'home') {
+      window.scrollTo({top:0,left:0,behavior:'smooth'});
+    } else {
+      target.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    document.querySelectorAll('[data-dock]').forEach(function(x){
+      x.classList.toggle('is-active', x.getAttribute('data-nav-target') === id);
+    });
+    try { history.replaceState(null, '', '#' + id); } catch(e) {}
+    return true;
+  }
+
   document.querySelectorAll('[data-nav-target]').forEach(function(item) {
     item.addEventListener('click', function(event) {
+      var id = item.getAttribute('data-nav-target');
+      if (!goToSection(id)) return;
       event.preventDefault();
       event.stopPropagation();
-
-      var id = item.getAttribute('data-nav-target');
-      var target = document.getElementById(id);
-      if (!target) return;
-
-      document.querySelectorAll('[data-dock]').forEach(function(x) {
-        x.classList.remove('is-active');
-      });
-      item.classList.add('is-active');
-
-      if (id === 'home') {
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-      } else {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      // Keep the URL hash in sync without creating a history entry.
-      try { history.replaceState(null, '', '#' + id); } catch (e) {}
-    });
+    }, {passive:false});
   });
+
+  if ('IntersectionObserver' in window) {
+    var sections = ['home','services','venues','contact'].map(function(id){
+      return document.getElementById(id);
+    }).filter(Boolean);
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          document.querySelectorAll('[data-dock]').forEach(function(x){
+            x.classList.toggle('is-active', x.getAttribute('data-nav-target') === id);
+          });
+        }
+      });
+    }, {root:null, rootMargin:'-30% 0px -55% 0px', threshold:0});
+    sections.forEach(function(section){observer.observe(section);});
+  }
+
+  // Smartlink is intentionally a normal user-clicked link. No automatic
+  // redirect, popup, or popunder is created by this page.
+  var smartlink = document.querySelector('.mehar-smartlink');
+  if (smartlink) {
+    smartlink.addEventListener('click', function(){
+      smartlink.setAttribute('aria-label','Open sponsored link');
+    }, {passive:true});
+  }
 
   // Graceful image fallback if remote image hosting is unavailable.
   document.querySelectorAll('.portal-media img').forEach(function(img) {
