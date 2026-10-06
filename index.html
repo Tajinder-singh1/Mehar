@@ -941,6 +941,83 @@
   }
 
 
+
+
+  /* ── Responsive ad slots: manual/display only, no popunder ─────────── */
+  .mehar-ad-section{
+    position:relative;
+    padding:28px 20px 34px;
+    background:#f0f1eb;
+    border-top:1px solid rgba(70,78,63,.08);
+    border-bottom:1px solid rgba(70,78,63,.08);
+  }
+  .mehar-ad-wrap{
+    width:min(100%,760px);
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+  }
+  .mehar-ad-label{
+    margin:0;
+    font-size:10px;
+    line-height:1;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#8b9186;
+  }
+  .mehar-ad-slot{
+    width:100%;
+    min-height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .mehar-ad-slot iframe{
+    display:block;
+    width:320px;
+    max-width:100%;
+    height:50px;
+    border:0;
+  }
+  #container-35a6d01b118df23a14a2cc37c2633363{
+    width:100%;
+    max-width:728px;
+    min-height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .mehar-smartlink{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:42px;
+    padding:0 22px;
+    border-radius:999px;
+    border:1px solid rgba(70,78,63,.18);
+    background:#fff;
+    color:#30352d;
+    text-decoration:none;
+    font-size:12px;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+    box-shadow:0 10px 24px rgba(33,40,30,.07);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .mehar-smartlink:hover{
+    transform:translateY(-2px);
+    box-shadow:0 16px 32px rgba(33,40,30,.12);
+  }
+  @media(max-width:560px){
+    .mehar-ad-section{padding:22px 12px 28px;}
+    .mehar-ad-wrap{gap:14px;}
+    .mehar-ad-slot{min-height:50px;}
+  }
+
   /* ── Scrollable Mehar Events sections ─────────────────────────────── */
   html {
     scroll-behavior: smooth;
@@ -1427,6 +1504,32 @@ Instagram: @mehar_events1 and @joban.lahoria.3.
       <article><div class="mehar-icon">✨</div><h3>Custom Theme Decor</h3><p>Personalized decoration based on your theme and ideas.</p></article>
       <article><div class="mehar-icon">🌸</div><h3>Home & Venue Decorations</h3><p>Complete decoration for homes and event venues.</p></article>
     </div>
+  </div>
+</section>
+
+<!-- Responsive display ads: no automatic popunder script is included. -->
+<section class="mehar-ad-section" aria-label="Advertisement">
+  <div class="mehar-ad-wrap">
+    <p class="mehar-ad-label">Advertisement</p>
+
+    <div class="mehar-ad-slot" aria-label="Banner advertisement">
+      <script>
+        atOptions = {
+          'key' : '5f1e2ea2267a0f2a7e38fb0272f28f2a',
+          'format' : 'iframe',
+          'height' : 50,
+          'width' : 320,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highrevenueformat.com/5f1e2ea2267a0f2a7e38fb0272f28f2a/invoke.js"></script>
+    </div>
+
+    <div id="container-35a6d01b118df23a14a2cc37c2633363" aria-label="Advertisement">
+      <script async="async" data-cfasync="false" src="https://pl31683030.profitableratecpmnetwork.com/35a6d01b118df23a14a2cc37c2633363/invoke.js"></script>
+    </div>
+
+    <a class="mehar-smartlink" href="https://www.profitableratecpmnetwork.com/jc3hk0ahh6?key=d35004be67fdd135283f359ac18a2136" target="_blank" rel="noopener noreferrer sponsored">Sponsored Link</a>
   </div>
 </section>
 
