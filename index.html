@@ -1509,7 +1509,73 @@
         }
     }
 }
+/* =========================================================
+   iOS SAFARI - PHOTO CARD FIX
+   Do not change desktop / Android layout
+   ========================================================= */
 
+@supports (-webkit-touch-callout: none) {
+  @media screen and (max-width: 900px) {
+
+    /* Keep both cards normally sized */
+    .card--about,
+    .card--stove {
+      overflow: hidden;
+    }
+
+    /* iOS Safari: disable the animated clip that collapses the photo */
+    .card--about .portal-media,
+    .card--stove .portal-media {
+      clip-path: none !important;
+      -webkit-clip-path: none !important;
+      animation: none !important;
+      -webkit-animation: none !important;
+
+      transform: none !important;
+      -webkit-transform: none !important;
+
+      position: absolute;
+      display: block;
+      overflow: hidden;
+    }
+
+    /* Keep the actual image fully inside its photo frame */
+    .card--about .portal-media img,
+    .card--stove .portal-media img {
+      width: 100% !important;
+      height: 100% !important;
+      display: block !important;
+      object-fit: cover !important;
+
+      transform: scale(1.08) !important;
+      -webkit-transform: scale(1.08) !important;
+
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    /* Disable the moving white scan on iOS */
+    .card--about figure::after,
+    .card--stove figure::after {
+      display: none !important;
+      animation: none !important;
+      -webkit-animation: none !important;
+    }
+
+    /* Prevent the photo canvas from interfering */
+    .card--about .pixel-reveal,
+    .card--stove .pixel-reveal {
+      display: none !important;
+    }
+
+    /* Preserve the rounded photo windows */
+    .card--about figure,
+    .card--stove figure {
+      overflow: hidden !important;
+      isolation: isolate;
+    }
+  }
+}
 </style>
 </head>
 <body>
