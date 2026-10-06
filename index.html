@@ -1464,6 +1464,51 @@
       top:calc(1324 * var(--u)) !important;
     }
   }
+  /* iOS Safari - hero cards */
+@supports (-webkit-touch-callout: none) {
+    @media (max-width: 900px) {
+
+        .hero {
+            height: auto;
+            min-height: 0;
+            overflow: visible;
+        }
+
+        .stage {
+            position: relative;
+            width: 100%;
+            height: calc(1750 * var(--u));
+            overflow: visible;
+        }
+
+        .card--about,
+        .card--stove {
+            position: absolute;
+            transform: none !important;
+            will-change: auto;
+        }
+
+        .card--about {
+            top: calc(260 * var(--u));
+        }
+
+        .card--stove {
+            top: calc(1030 * var(--u));
+        }
+
+        .card figure,
+        .portal-media {
+            overflow: hidden;
+        }
+
+        .portal-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+}
 
 </style>
 </head>
