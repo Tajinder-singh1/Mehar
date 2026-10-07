@@ -1408,21 +1408,47 @@
   }
   @media (max-width:900px){
     html.ios-safari .hero {
-      height:max(100svh, calc(1550 * var(--u))) !important;
-      min-height:0 !important;
+      height:calc(1625 * var(--u)) !important;
+      min-height:calc(1625 * var(--u)) !important;
       overflow:hidden !important;
     }
     html.ios-safari .hero .stage {
       position:relative !important;
-      height:calc(1550 * var(--u)) !important;
-      min-height:calc(1550 * var(--u)) !important;
+      height:calc(1625 * var(--u)) !important;
+      min-height:calc(1625 * var(--u)) !important;
       flex:none !important;
     }
-  }
-  @media (max-width:600px){
-    html.ios-safari .hero .stage {
-      height:calc(1550 * var(--u)) !important;
-      min-height:calc(1550 * var(--u)) !important;
+
+    /* Keep the two mobile cards at their original design dimensions. */
+    html.ios-safari .hero .card--about {
+      left:calc(34 * var(--u)) !important;
+      top:calc(1050 * var(--u)) !important;
+      width:calc(692 * var(--u)) !important;
+      height:calc(250 * var(--u)) !important;
+      clip-path:none !important;
+      -webkit-clip-path:none !important;
+      opacity:1 !important;
+      visibility:visible !important;
+    }
+    html.ios-safari .hero .card--stove {
+      left:calc(34 * var(--u)) !important;
+      top:calc(1324 * var(--u)) !important;
+      width:calc(692 * var(--u)) !important;
+      height:calc(268 * var(--u)) !important;
+      clip-path:none !important;
+      -webkit-clip-path:none !important;
+      opacity:1 !important;
+      visibility:visible !important;
+    }
+
+    html.ios-safari .hero .card--about .label,
+    html.ios-safari .hero .card--about h2,
+    html.ios-safari .hero .card--stove .label,
+    html.ios-safari .hero .card--stove h2 {
+      display:block !important;
+      opacity:1 !important;
+      visibility:visible !important;
+      z-index:6 !important;
     }
   }
 
